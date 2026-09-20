@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const FALLBACK_IMG = "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80";
+
 const SERVICES = [
   {
     id: 1,
@@ -52,14 +54,18 @@ const SERVICES = [
 ];
 
 const LOOKBOOK_ITEMS = [
-  { url: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80", title: "Modern Salon Environment", sub: "Luxury Harrison St Studio" },
-  { url: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=800&q=80", title: "Sun-Kissed Balayage", sub: "Hand-Painted Highlights" },
-  { url: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80", title: "Precision Cut & Blowout", sub: "Designer Styling" },
-  { url: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80", title: "Silk Smooth Keratin", sub: "Frizz-Free Shine" },
-  { url: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80", title: "Volume Hair Extensions", sub: "100% Remy Human Hair" },
-  { url: "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=80", title: "Olaplex Scalp Therapy", sub: "Intensive Hair Repair" },
-  { url: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80", title: "Styling Station Ambiance", sub: "High-Fashion Haircare" },
-  { url: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80", title: "Master Hair Artistry", sub: "Custom Profile Creation" }
+  { url: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80", title: "Modern Salon Environment", sub: "Luxury Harrison St Studio" },
+  { url: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=1200&q=80", title: "Sun-Kissed Balayage", sub: "Hand-Painted Highlights" },
+  { url: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80", title: "Precision Cut & Blowout", sub: "Designer Styling" },
+  { url: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80", title: "Silk Smooth Keratin", sub: "Frizz-Free Shine" },
+  { url: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=80", title: "Volume Hair Extensions", sub: "100% Remy Human Hair" },
+  { url: "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=1200&q=80", title: "Olaplex Scalp Therapy", sub: "Intensive Hair Repair" },
+  { url: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80", title: "Styling Station Ambiance", sub: "High-Fashion Haircare" },
+  { url: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80", title: "Master Hair Artistry", sub: "Custom Profile Creation" },
+  { url: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=1200&q=80", title: "Luxury Color Glaze", sub: "Shine & Tone Finish" },
+  { url: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=1200&q=80", title: "Professional Haircare Bar", sub: "Redken & Kérastase" },
+  { url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80", title: "Salon Director & Master Stylists", sub: "Expert Consultations" },
+  { url: "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=80", title: "Signature Hair Styling", sub: "Custom Grand Ledge Studio" }
 ];
 
 const STYLISTS = [
@@ -79,6 +85,22 @@ export default function App() {
     date: "",
     time: "10:00 AM"
   });
+
+  // Lightbox Carousel State
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const openLightbox = (index) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+
+  const nextLightboxImage = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev + 1) % LOOKBOOK_ITEMS.length);
+  };
+
+  const prevLightboxImage = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev - 1 + LOOKBOOK_ITEMS.length) % LOOKBOOK_ITEMS.length);
+  };
 
   const handleOpenBooking = (serviceName = "Master Designer Cut & Style") => {
     setSelectedService(serviceName);
@@ -112,7 +134,7 @@ export default function App() {
           <div className="nav-links">
             <a href="#services">Services</a>
             <a href="#stylists">Our Stylists</a>
-            <a href="#lookbook">Transformation Gallery</a>
+            <a href="#lookbook">Lookbook ({LOOKBOOK_ITEMS.length})</a>
             <a href="#hours">Location & Hours</a>
             <button className="btn btn-gold" onClick={() => handleOpenBooking()}>Book Consultation</button>
           </div>
@@ -137,7 +159,11 @@ export default function App() {
             </div>
           </div>
           <div className="hero-img-box">
-            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="Profiles Hair Salon Studio" />
+            <img
+              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80"
+              alt="Profiles Hair Salon Studio"
+              onError={(e) => { e.target.src = FALLBACK_IMG; }}
+            />
           </div>
         </div>
       </section>
@@ -152,7 +178,11 @@ export default function App() {
           <div className="services-grid">
             {SERVICES.map(s => (
               <div key={s.id} className="service-card">
-                <img src={s.img} alt={s.name} />
+                <img
+                  src={s.img}
+                  alt={s.name}
+                  onError={(e) => { e.target.src = FALLBACK_IMG; }}
+                />
                 <div className="service-body">
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '8px' }}>
                     <h3 className="service-title">{s.name}</h3>
@@ -182,7 +212,11 @@ export default function App() {
           <div className="team-grid">
             {STYLISTS.map((st, i) => (
               <div key={i} className="team-card">
-                <img src={st.img} alt={st.name} />
+                <img
+                  src={st.img}
+                  alt={st.name}
+                  onError={(e) => { e.target.src = FALLBACK_IMG; }}
+                />
                 <div className="team-body">
                   <h3 className="team-name">{st.name}</h3>
                   <div className="team-role">{st.role}</div>
@@ -194,18 +228,23 @@ export default function App() {
         </div>
       </section>
 
-      {/* Lookbook - Clean Cards */}
+      {/* Lookbook - Carousel Lightbox Cards */}
       <section id="lookbook" className="section">
         <div className="container">
           <div className="section-header">
             <h2>STYLE & TRANSFORMATION LOOKBOOK</h2>
-            <p>Explore recent balayage, cuts, and transformations at Profiles Hair Salon</p>
+            <p>Click any photo to open the interactive full-screen carousel ({LOOKBOOK_ITEMS.length} photos)</p>
           </div>
           <div className="lookbook-grid">
             {LOOKBOOK_ITEMS.map((item, idx) => (
-              <div key={idx} className="lookbook-card">
+              <div key={idx} className="lookbook-card" onClick={() => openLightbox(idx)}>
                 <div className="lookbook-img-box">
-                  <img src={item.url} alt={item.title} />
+                  <img
+                    src={item.url}
+                    alt={item.title}
+                    onError={(e) => { e.target.src = FALLBACK_IMG; }}
+                  />
+                  <span className="expand-badge">🔍 View Carousel</span>
                 </div>
                 <div className="lookbook-body">
                   <div className="lookbook-card-title">{item.title}</div>
@@ -258,7 +297,34 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Modal */}
+      {/* Lightbox Carousel Modal */}
+      {lightboxIndex !== null && (
+        <div className="lightbox-backdrop" onClick={closeLightbox}>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={closeLightbox}>✕</button>
+            <div className="lightbox-img-box">
+              <button className="lightbox-nav lightbox-prev" onClick={prevLightboxImage}>‹</button>
+              <img
+                src={LOOKBOOK_ITEMS[lightboxIndex].url}
+                alt={LOOKBOOK_ITEMS[lightboxIndex].title}
+                onError={(e) => { e.target.src = FALLBACK_IMG; }}
+              />
+              <button className="lightbox-nav lightbox-next" onClick={nextLightboxImage}>›</button>
+            </div>
+            <div className="lightbox-footer">
+              <div>
+                <h3 style={{ fontFamily: 'var(--font-heading)', color: 'var(--primary-gold)' }}>{LOOKBOOK_ITEMS[lightboxIndex].title}</h3>
+                <p style={{ color: 'var(--text-muted)' }}>{LOOKBOOK_ITEMS[lightboxIndex].sub}</p>
+              </div>
+              <div style={{ fontWeight: 600, color: 'var(--primary-gold)' }}>
+                Image {lightboxIndex + 1} of {LOOKBOOK_ITEMS.length}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Booking Modal */}
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
