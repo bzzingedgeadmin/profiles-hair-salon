@@ -50,8 +50,7 @@ a {
 }
 
 .navbar {
-  background: rgba(15, 20, 28, 0.95);
-  backdrop-filter: blur(12px);
+  background: rgba(15, 20, 28, 0.98);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -272,42 +271,59 @@ a {
   font-size: 0.9rem;
 }
 
-/* Lookbook */
+/* Clean Lookbook Cards - No half-black transparent overlays! */
 .lookbook-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
-.lookbook-item {
-  height: 260px;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
+.lookbook-card {
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.lookbook-item img {
+.lookbook-card:hover {
+  border-color: var(--primary-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(229, 193, 88, 0.1);
+}
+
+.lookbook-img-box {
+  height: 240px;
+  overflow: hidden;
+}
+
+.lookbook-img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
 
-.lookbook-item:hover img {
-  transform: scale(1.08);
+.lookbook-card:hover .lookbook-img-box img {
+  transform: scale(1.06);
 }
 
-.lookbook-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(transparent, rgba(15,20,28,0.9));
-  display: flex;
-  align-items: flex-end;
-  padding: 16px;
+.lookbook-body {
+  padding: 16px 20px;
+  background: var(--bg-lighter);
+  border-top: 1px solid var(--border-color);
+}
+
+.lookbook-card-title {
   font-family: var(--font-heading);
+  font-size: 1.15rem;
   color: var(--primary-gold);
-  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.lookbook-card-sub {
+  color: var(--text-muted);
+  font-size: 0.88rem;
 }
 
 /* Info & Hours */

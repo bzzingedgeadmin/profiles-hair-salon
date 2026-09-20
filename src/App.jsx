@@ -7,7 +7,7 @@ const SERVICES = [
     price: "$50+",
     time: "45 mins",
     desc: "Comprehensive hair and face shape consultation, scalp massage shampoo, haircut, and signature blowout finish.",
-    img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const SERVICES = [
     price: "$175+",
     time: "2.5 hrs",
     desc: "Hand-painted seamless color blending, custom gloss toner glaze, bond strengthener, and luxury blowout.",
-    img: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ const SERVICES = [
     price: "$210+",
     time: "2 hrs",
     desc: "Reduces frizz up to 95%, locks in vibrant color, and restores silky manageable texture for up to 5 months.",
-    img: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 4,
@@ -31,7 +31,7 @@ const SERVICES = [
     price: "Consultation Required",
     time: "2 - 3 hrs",
     desc: "100% Remy human hair extensions adding custom length, volume, and seamless dimensional color.",
-    img: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 5,
@@ -39,7 +39,7 @@ const SERVICES = [
     price: "$45",
     time: "30 mins",
     desc: "Rebinds broken disulphide hair bonds caused by chemical styling, heat, or environmental damage.",
-    img: "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 6,
@@ -47,25 +47,25 @@ const SERVICES = [
     price: "$140+",
     time: "2 hrs",
     desc: "Precision foil placement from root to tip creating maximum brightness, dimension, and grey coverage.",
-    img: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
-const LOOKBOOK_IMAGES = [
-  { url: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80", title: "Modern Salon Environment" },
-  { url: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=600&q=80", title: "Sun-Kissed Balayage" },
-  { url: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80", title: "Precision Cut & Blowout" },
-  { url: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=600&q=80", title: "Silk Smooth Keratin" },
-  { url: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=600&q=80", title: "Volume Hair Extensions" },
-  { url: "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=600&q=80", title: "Olaplex Scalp Therapy" },
-  { url: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=600&q=80", title: "Styling Station Ambiance" },
-  { url: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=600&q=80", title: "Master Hair Artistry" }
+const LOOKBOOK_ITEMS = [
+  { url: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80", title: "Modern Salon Environment", sub: "Luxury Harrison St Studio" },
+  { url: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=800&q=80", title: "Sun-Kissed Balayage", sub: "Hand-Painted Highlights" },
+  { url: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80", title: "Precision Cut & Blowout", sub: "Designer Styling" },
+  { url: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80", title: "Silk Smooth Keratin", sub: "Frizz-Free Shine" },
+  { url: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80", title: "Volume Hair Extensions", sub: "100% Remy Human Hair" },
+  { url: "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=80", title: "Olaplex Scalp Therapy", sub: "Intensive Hair Repair" },
+  { url: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80", title: "Styling Station Ambiance", sub: "High-Fashion Haircare" },
+  { url: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80", title: "Master Hair Artistry", sub: "Custom Profile Creation" }
 ];
 
 const STYLISTS = [
-  { name: "Elena Vance", role: "Master Colorist & Salon Director", exp: "16+ Years Experience", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" },
-  { name: "Jessica Hayes", role: "Balayage & Extension Specialist", exp: "10 Years Experience", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" },
-  { name: "Samantha Ross", role: "Precision Cut & Keratin Specialist", exp: "8 Years Experience", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" }
+  { name: "Elena Vance", role: "Master Colorist & Salon Director", exp: "16+ Years Experience", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80" },
+  { name: "Jessica Hayes", role: "Balayage & Extension Specialist", exp: "10 Years Experience", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500&q=80" },
+  { name: "Samantha Ross", role: "Precision Cut & Keratin Specialist", exp: "8 Years Experience", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" }
 ];
 
 export default function App() {
@@ -194,7 +194,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Lookbook */}
+      {/* Lookbook - Clean Cards */}
       <section id="lookbook" className="section">
         <div className="container">
           <div className="section-header">
@@ -202,10 +202,15 @@ export default function App() {
             <p>Explore recent balayage, cuts, and transformations at Profiles Hair Salon</p>
           </div>
           <div className="lookbook-grid">
-            {LOOKBOOK_IMAGES.map((img, idx) => (
-              <div key={idx} className="lookbook-item">
-                <img src={img.url} alt={img.title} />
-                <div className="lookbook-overlay">{img.title}</div>
+            {LOOKBOOK_ITEMS.map((item, idx) => (
+              <div key={idx} className="lookbook-card">
+                <div className="lookbook-img-box">
+                  <img src={item.url} alt={item.title} />
+                </div>
+                <div className="lookbook-body">
+                  <div className="lookbook-card-title">{item.title}</div>
+                  <div className="lookbook-card-sub">{item.sub}</div>
+                </div>
               </div>
             ))}
           </div>
